@@ -6,11 +6,12 @@ root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(root_dir)
 
 from aqsi_types.aqsi_types import *
+from headers_function import get_header
 
 
 class ReceiptsAqsi:
-    def __init__(self, API):
-        self.__HEADERS = API
+    def __init__(self, STRIPE_SECRET_KEY:str) -> None:
+        self.__HEADERS = get_header(STRIPE_SECRET_KEY)
     
     def get_QasiSorted(*args, **kwargs):
         return QasiSorted(*args, **kwargs)

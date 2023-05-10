@@ -1,17 +1,18 @@
 import sys
 import os
+import requests
 import json
 
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(root_dir)
 
-import requests
+from headers_function import get_header
 
 
 
 class Slips:
-    def __init__(self, API) -> None:
-        self.HEADERS = API
+    def __init__(self, STRIPE_SECRET_KEY:str) -> None:
+        self.__HEADERS = get_header(STRIPE_SECRET_KEY)
 
     def slips_index(self, BeginDate:str, Operation:str=None, Search:str=None,
                     BeginAmount:str=None, EndAmount:str=None, EndDate:str=None,

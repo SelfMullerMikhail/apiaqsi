@@ -8,12 +8,12 @@ sys.path.append(root_dir)
 
 from functions.aqsi_functions import AqsiFunctions
 from aqsi_types.aqsi_types import *
-
+from headers_function import get_header
 
 
 class ShopsAqsi:
-    def __init__(self, API:str):
-        self.__HEADERS = API
+    def __init__(self, STRIPE_SECRET_KEY:str) -> None:
+        self.__HEADERS = get_header(STRIPE_SECRET_KEY)
 
     def shops_set_price_status(self, guid: str) -> json:
         """Obtaining the status of batch message upload by identifier.

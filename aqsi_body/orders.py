@@ -6,15 +6,15 @@ import requests
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(root_dir)
 
-from functions.aqsi_functions import AqsiFunctions
 from aqsi_types.aqsi_types import *
+from headers_function import get_header
 
 
 
 
 class OrdersAqsi:
-    def __init__(self, API):
-        self.__HEADERS = API
+    def __init__(self, STRIPE_SECRET_KEY:str) -> None:
+        self.__HEADERS = get_header(STRIPE_SECRET_KEY)
     
     def orders_index(self, 
                     filtered_DateFrom:str=(datetime.date.today() - datetime.

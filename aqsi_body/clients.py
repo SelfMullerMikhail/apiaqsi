@@ -7,11 +7,12 @@ sys.path.append(root_dir)
 
 from aqsi_types.aqsi_types import *
 from functions.aqsi_functions import AqsiFunctions
+from headers_function import get_header
 
 
 class ClientsAqsi:
-    def __init__(self, API):
-        self.__HEADERS = API
+    def __init__(self, STRIPE_SECRET_KEY:str) -> None:
+        self.__HEADERS = get_header(STRIPE_SECRET_KEY)
     
     def clients_create(self, 
                     id:str,

@@ -1,3 +1,5 @@
+import sys
+import os
 import requests
 import pickle
 
@@ -5,13 +7,14 @@ root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(root_dir)
 
 from functions.aqsi_functions import AqsiFunctions
-
+from headers_function import get_header
 from aqsi_types.aqsi_types import *
 
 
+
 class GoodsAqsi:
-    def __init__(self, API):
-        self.__HEADERS = API
+    def __init__(self, STRIPE_SECRET_KEY:str) -> None:
+        self.__HEADERS = get_header(STRIPE_SECRET_KEY)
         
     def goods_create(self, id:str, group_id:str, tax:int, unit:str, subject:int,
                     name:str, payment_method_type:int, type:str="simple", 

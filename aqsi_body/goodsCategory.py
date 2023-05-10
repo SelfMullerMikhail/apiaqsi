@@ -7,12 +7,13 @@ root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(root_dir)
 
 from functions.aqsi_functions import AqsiFunctions
-
+from headers_function import get_header
 from aqsi_types.aqsi_types import *
 
+
 class GoodsCategoryAqsi:
-    def __init__(self, API):
-        self.__HEADERS = API
+    def __init__(self, STRIPE_SECRET_KEY:str) -> None:
+        self.__HEADERS = get_header(STRIPE_SECRET_KEY)
         
     def goodsCategory_create(self, id:str, name:str, defaultSubject:int, 
                             defaultTax:int, defaultPaymentMethodType:int,
